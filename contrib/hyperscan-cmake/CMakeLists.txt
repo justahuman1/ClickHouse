@@ -220,13 +220,12 @@ if (ENABLE_HYPERSCAN)
         target_compile_definitions (hyperscan PUBLIC USE_HYPERSCAN=1)
         target_compile_options (hyperscan
             PRIVATE -g0 -march=corei7 # library has too much debug information
-            PUBLIC -Wno-documentation
         )
         target_include_directories (hyperscan
             PRIVATE
                 common
                 ${LIBRARY_DIR}/include
-            PUBLIC
+            SYSTEM BEFORE PUBLIC
                 ${LIBRARY_DIR}/src
         )
         if (ARCH_AMD64)
